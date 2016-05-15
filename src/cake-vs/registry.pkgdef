@@ -1,0 +1,12 @@
+﻿
+[$RootKey$\Languages\CodeExpansions\CSharp\Paths]
+"Snippets"="$PackageFolder$\Snippets\Cake Snippet Pack"
+
+[$RootKey$\Languages\File Extensions\.cake]
+@="{694dd9b6-b865-4c5b-ad85-86356e9c88dc}"
+
+[$RootKey$\Editors\{08467b34-b90f-4d91-bdca-eb8c8cf3033a}\Extensions]
+"cake"=dword:00000027
+
+[$RootKey$\Editors\{A6C744A8-0E4A-4FC6-886A-064283054674}\Extensions]
+"cake"=dword:00000028
