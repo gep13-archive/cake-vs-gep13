@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                           xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
+  <Symbols>
+    <String Name="Resources" Value="/cake_vs;Component/" />
+    <Guid Name="CakeImagesGuid" Value="23caf834-d26c-422b-9b25-666746a71591" />
+    <ID Name="ProjectIcon" Value="0" />
+  </Symbols>
+  <Images>
+    <Image Guid="$(CakeImagesGuid)" ID="$(ProjectIcon)">
+      <Source Uri="$(Resources)/Images/CakeImagesProjectIcon.xaml" />
+      <Source Uri="$(Resources)/Images/CakeImagesProjectIcon.png" >
+        <Size Value="16" />
+      </Source>  
+    </Image>
+  </Images>
+  <ImageLists />
+</ImageManifest>
