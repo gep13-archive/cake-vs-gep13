@@ -36,8 +36,11 @@
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
-      <Group guid="guidCakeBootstrapperCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+      <Group guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeMenuGroup" priority="0x0600">
         <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="TopLevelMenu"/>
+      </Group>
+      <Group guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeSubMenuGroup" priority="0x0000">
+        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="SubMenu"/>
       </Group>
     </Groups>
 
@@ -52,25 +55,25 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeBootstrapperCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="guidCakeBootstrapperCommandPackageCmdSet" id="PowerShellBootstrapperCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeSubMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Add PowerShell Bootstrapper for Cake...</ButtonText>
+          <ButtonText>PowerShell</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeBootstrapperBashCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="guidCakeBootstrapperCommandPackageCmdSet" id="BashBootstrapperCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeSubMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Add Bash Bootstrapper for Cake...</ButtonText>
+          <ButtonText>Bash</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeConfigurationCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="guidCakeBootstrapperCommandPackageCmdSet" id="ConfigurationCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Add Cake Configuration File...</ButtonText>
+          <ButtonText>Add Cake Configuration File</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -93,6 +96,13 @@
           <CommandName>Cake</CommandName>
         </Strings>
       </Menu>
+      <Menu guid="guidCakeBootstrapperCommandPackageCmdSet" id="SubMenu" priority="0x0100" type="Menu">
+        <Parent guid="guidCakeBootstrapperCommandPackageCmdSet" id="CakeMenuGroup"/>
+        <Strings>
+          <ButtonText>Add Bootstrapper...</ButtonText>
+          <CommandName>Add Bootstrapper...</CommandName>
+        </Strings>
+      </Menu>
     </Menus>
   </Commands>
 
@@ -103,10 +113,12 @@
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidCakeBootstrapperCommandPackageCmdSet" value="{902d97dd-af7d-4781-b733-96132ebeb202}">
       <IDSymbol name="TopLevelMenu" value="0x1021"/>
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="CakeBootstrapperCommandId" value="0x0100" />
-      <IDSymbol name="CakeBootstrapperBashCommandId" value="0x0101" />
-      <IDSymbol name="CakeConfigurationCommandId" value="0x0102" />
+      <IDSymbol name="SubMenu" value="0x1100"/>
+      <IDSymbol name="CakeMenuGroup" value="0x1020" />
+      <IDSymbol name="CakeSubMenuGroup" value="0x1030" />
+      <IDSymbol name="PowerShellBootstrapperCommandId" value="0x0105" />
+      <IDSymbol name="BashBootstrapperCommandId" value="0x0110" />
+      <IDSymbol name="ConfigurationCommandId" value="0x0100" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{b6b4d84e-b56a-45fb-bf14-b374e0e91430}" >

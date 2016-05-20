@@ -17,10 +17,11 @@ namespace cake_vs.Commands
     /// </summary>
     internal sealed class CakeBootstrapperCommand
     {
-        /// <summary>
-        /// Command ID.
-        /// </summary>
-        public const int CommandId = 0x0100;
+        public const int ConfigurationCommandId = 0x0100;
+
+        public const int PowerShellBootstrapperCommandId = 0x0105;
+
+        public const int BashBootstrapperCommandId = 0x0110;
 
         /// <summary>
         /// Command menu group (command set GUID).
@@ -46,12 +47,20 @@ namespace cake_vs.Commands
 
             this.package = package;
 
-            OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
+            var commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
-                var menuCommandID = new CommandID(CommandSet, CommandId);
-                var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
-                commandService.AddCommand(menuItem);
+                var configurationMenuCommandId = new CommandID(CommandSet, ConfigurationCommandId);
+                var configurationMenuItem = new MenuCommand(this.ConfigurationMenuItemCallback, configurationMenuCommandId);
+                commandService.AddCommand(configurationMenuItem);
+
+                var powershellBootstrapperMenuCommandId = new CommandID(CommandSet, PowerShellBootstrapperCommandId);
+                var powershellBootstrapperMenuItem = new MenuCommand(this.PowerShellBootstrapperMenuItemCallback, powershellBootstrapperMenuCommandId);
+                commandService.AddCommand(powershellBootstrapperMenuItem);
+
+                var bashBootstrapperMenuCommandId = new CommandID(CommandSet, BashBootstrapperCommandId);
+                var bashBootstrapperMenuItem = new MenuCommand(this.BashBootstrapperMenuItemCallback, bashBootstrapperMenuCommandId);
+                commandService.AddCommand(bashBootstrapperMenuItem);
             }
         }
 
@@ -91,10 +100,40 @@ namespace cake_vs.Commands
         /// </summary>
         /// <param name="sender">Event sender.</param>
         /// <param name="e">Event args.</param>
-        private void MenuItemCallback(object sender, EventArgs e)
+        private void ConfigurationMenuItemCallback(object sender, EventArgs e)
         {
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "CakeBootstrapperCommand";
+            var message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.ConfigurationMenuItemCallback()", this.GetType().FullName);
+            var title = "CakeBootstrapperCommand";
+
+            // Show a message box to prove we were here
+            VsShellUtilities.ShowMessageBox(
+                this.ServiceProvider,
+                message,
+                title,
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+        }
+
+        private void PowerShellBootstrapperMenuItemCallback(object sender, EventArgs e)
+        {
+            var message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.PowerShellBootstrapperMenuItemCallback()", this.GetType().FullName);
+            var title = "CakeBootstrapperCommand";
+
+            // Show a message box to prove we were here
+            VsShellUtilities.ShowMessageBox(
+                this.ServiceProvider,
+                message,
+                title,
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+        }
+
+        private void BashBootstrapperMenuItemCallback(object sender, EventArgs e)
+        {
+            var message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.BashBootstrapperMenuItemCallback()", this.GetType().FullName);
+            var title = "CakeBootstrapperCommand";
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(
