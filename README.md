@@ -1,6 +1,6 @@
 **NOTE:** Work on this has ceased, and instead, it is being replaced by the work that is being done here:
 
-https://github.com/agc93/Cake.VisualStudio
+https://github.com/cake-build/cake-vs
 
 The repo is being kept as there are some good conversations within the issues/pull requests.
 
